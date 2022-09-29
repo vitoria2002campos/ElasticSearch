@@ -1,0 +1,46 @@
+INSERINDO UM INDEX NO ELASTICSEARCH
+#INDEX = CATALOGO
+#TABELA = PESSOAS
+
+#SINTAXE DO COMANDO POST:
+#POST [índice]/_doc
+# {JSON_COM_DOCUMENTO}
+
+POST catalogo/_doc/
+{
+  "nome": "Vitória De Lara",
+  "Interesses":["cantar","comida","música","  programar"],
+  "cidade":"SP",
+  "país":"Brasil"
+}
+
+#SINTAXE DO COMANDO GET:
+#GET [índice]/_count
+#_count = funcao do elasticsearch, indica quantos documentos existem no meu index
+
+GET catalogo/_count
+
+#Inserindo Documentos com ID Explícito
+POST catalogo/_doc/1
+{
+  "nome":"Leandro",
+  "interesses":["natação", "programar"],
+  "cidade":"SP",
+  "pais":"Brasil"
+}
+
+#Obtendo e pesquisando documentos
+#SINTAXE DO COMANDO GET COM ID
+#GET [índice]/_doc/{id}
+GET catalogo/_doc/1
+
+#Fazendo busca geral de documentos
+#SINTAXE:
+#GET [índice]/_search
+GET catalogo/_search
+
+#Buscando docs com termo de pesquisa
+#SINTAXE:
+#GET [índice]/_search/?q=[termo]
+GET catalogo/_search/?q=programar
+GET catalogo/_search/?q=comida
