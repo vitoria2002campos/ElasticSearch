@@ -1,0 +1,44 @@
+#Indices, Tipos, Shards e Réplicas
+#CREATE READ UPDATE DELETE = CRUD
+
+#Para descobrir se um arquivo existe usamos o comando HTTP HEAD
+
+HEAD catalogo/_doc/1
+#Tambem da pra usar no curl:
+# curl -IHEAD "http://localhost:9200/catalogo/_doc/1"
+
+#HTTP GET - Obtendo um documento
+GET /catalogo/_doc/1
+#HTTP PUT - Criando ou atualizando um documento
+
+#POST - Utilizado para criar um novo recurso e caso voce nao passe o id o proprio elasticsearch cria pra voce
+#PUT - Ele atualiza o documento existente ou insere um novo documento de acordo com o que foi fornecido. A informação não vai ser duplicada quando voce atualizar seu documento
+
+PUT catalogo/_doc/50
+{
+  "nome": "Vitória  Lara",
+  "Interesses":["cantar","comida","música","  programar"],
+  "cidade":"SP",
+  "país":"Brasil"
+}
+
+#Verificação de atualizacao do documento
+GET /catalogo/_doc/50
+
+#HTTP DELETE - Apagando documentos
+GET catalogo/_doc/1
+#SINTAXE:
+DELETE catalogo/_doc/1
+
+#HTTP POST - Inserindo documentos
+#SINTAXE: 
+POST catalogo/_update/50
+{
+  "doc":{
+    "nome":"Marcelo R. Oliveira"
+  }
+}
+
+#Shards
+
+#Cluster é um conjunto de servidores que compoe o elasticsearch
