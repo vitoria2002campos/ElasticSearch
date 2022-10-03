@@ -1,0 +1,27 @@
+#Iniciando com buscas 
+
+#Busca Livre
+GET /catalogo/_search/?q=comida
+
+#Busca especifica
+GET catalogo/_search/?q=Interesses:comida
+
+#Cabecalho da busca
+#"took" =  demora de milissegundos
+#"timed_out" =  se excedeu ou n o tempo de resposta. False indica que está tudo ok
+
+#Conjunto Json
+#"_shards" = Quantos shards(fragmentos do elasticsearch) foram afetados pela busca
+#"total" =  total de shards envolvidos
+#"successful" = quantos shards tiveram sucesso na obtencao da resposta
+#"skipped" = quantos shards que foram ignorados
+#"failed" = Quantos shards falharam na obtenção de resultados
+
+
+#"hits" = Resultado em sí, que vai conter um totalizador de documentos
+#"total" = quantidade de documentos retornados
+#"value" = 
+#"relation" = 
+#"max_score" = pontuacao maxima da busca vai de 0 ate 1 , significa o grau de relevancia do resultado. Quanto mais proximo de 0 menos relevante e mais diferente do resultado da nossa busca
+
+
