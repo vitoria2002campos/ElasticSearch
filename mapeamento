@@ -1,0 +1,33 @@
+#Mapeamento de Tipos
+
+#Mapping = Mapeamento
+
+#O Elasticsearch define automaticamente o índice a partir do documento!
+
+#Sintaxe do Mapping
+
+#GET catalogo/_mapping
+
+GET catalogo/_mapping
+
+
+#Alterando o documento
+PUT /catalogo/_doc/50
+{
+   "nome" : "Vitória  Lara",
+   "Interesses" : [
+                    "cantar",
+                    "comida",
+                    "música",
+                    "programar"
+                  ],
+   "cidade" : "SP",
+    "país" : "Japão"
+}
+
+GET /catalogo/_doc/50
+
+#O elasticsearch divide os seus tipos de dados em duas categorias: 
+#Dados "Core": strings, números e datas
+#Dados tipos "complexos": arrays, IPv4, Ipv6,informação geoespacial; latitude e longetude
+
