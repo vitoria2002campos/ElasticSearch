@@ -1,0 +1,40 @@
+#Quebrando textos com Analyzers
+
+#Índice Invertido e Analizadores
+
+GET catalogo/_search?q=musica
+#Observe a diferença
+GET catalogo/_search?q=música
+
+#Analisador quebra os documentos em palavras, e existem alguns tipos...
+
+#Tokens + Documentos
+
+#Indice invertido: É uma associação entre os tokens e os documentos de origem
+
+#Analyzers Comuns
+# whitespace: Pega o espaço em branco e cada espaço em branco que ele encontra e usa isso para quebrar a palavra
+#(standard): Além dele quebrar os espaçoes em branco, ele tambpem ignora as virgulas, ponto e deixa todas as palavras em caixa baixa, só que armazena algarismos
+#Simple: Parecido com o analisador padrão, mas a diferença é que ele não coloca algarismos dentro do Token que vai para o índice invertido
+#Idioma (Portuguese, English, etc): Ele faz a mesma coisa que o analisador simples só que vai removar acentuação , ele vai reconhecer a palavra se estiver no plural e vai armazenar a palavra do singular, e vice-versa. Ele tbm tem espaços para criar as coisas, como por exemplo uma lista de sinonimos. 
+
+
+#Sintaxe analizador Standard:
+GET catalogo/_analyze
+{
+  "text": "Eu nasci há 10mil (sim, isso mesmo, 10 mil) anos atrás"
+}
+
+#Sintaxe analizador Simple:
+GET catalogo/_analyze
+{
+  "analyzer": "simple", 
+  "text": "Eu nasci há 10mil (sim, isso mesmo, 10 mil) anos atrás"
+}
+
+#Sintaxe analizador Whitespace:
+GET catalogo/_analyze
+{
+  "analyzer": "whitespace", 
+  "text": "Eu nasci há 10mil (sim, isso mesmo, 10 mil) anos atrás"
+}
